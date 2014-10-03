@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">人狼BGM＆タイマー</string>
+    <string name="action_settings">設定</string>
+
+    <string name="lightning_se_button">かみなり</string>
+
+	<string name="openning_bgm_button">オープニング</string>
+	<string name="confirm_bgm_button">役職確認</string>
+	<string name="discussion_bgm_button">議論</string>
+	<string name="vote_bgm_button">投票</string>
+	<string name="execution_bgm_button">処刑</string>
+	<string name="morning_bgm_button">夜</string>
+	<string name="night_bgm_button">朝</string>
+
+	<string name="timer_format">%s</string>
+	<string name="start_button_label">スタート</string>
+	<string name="stop_button_label">ストップ</string>
+	<string name="reset_button_label">リセット</string>
+
+
+	<string name="second_button_label">+1分</string>
+	<string name="minuts_button_label">+10秒</string>
+</resources>

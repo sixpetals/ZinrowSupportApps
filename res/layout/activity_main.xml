@@ -1,0 +1,113 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="top|right"
+    android:orientation="vertical"
+    tools:context="org.sixpetals.zinrow.stopwatch.MainActivity" >
+
+    <TextView
+        android:id="@+id/top_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:text="じんろうのおんがく"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/lightning_sound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/top_label"
+        android:text="@string/lightning_se_button" />
+
+    <Button
+        android:id="@+id/opening_bgm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/lightning_sound"
+        android:layout_below="@+id/lightning_sound"
+        android:layout_marginTop="15dp"
+        android:text="@string/openning_bgm_button" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:gravity="top|center_horizontal"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/time_second_text_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:format="@string/timer_format"
+            android:text="1"
+            android:textSize="60sp" />
+
+        <TextView
+            android:id="@+id/time_sepalater_text_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:format="@string/timer_format"
+            android:text=":"
+            android:textSize="60sp" />
+
+        <TextView
+            android:id="@+id/time_minute_text_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:format="@string/timer_format"
+            android:text="15"
+            android:textSize="60sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:gravity="top|center_horizontal"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/start_button_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/start_button_label" />
+
+        <Button
+            android:id="@+id/stop_button_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/stop_button_label" />
+
+        <Button
+            android:id="@+id/reset_button_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reset_button_label" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top|center_horizontal"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/second_button_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/second_button_label" />
+
+        <Button
+            android:id="@+id/minuts_button_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/minuts_button_label" />
+    </LinearLayout>
+
+</LinearLayout>
