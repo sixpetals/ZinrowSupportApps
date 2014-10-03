@@ -13,6 +13,7 @@ import android.os.SystemClock;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.app.Activity;
+import android.app.TimePickerDialog;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
@@ -21,6 +22,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity implements OnInitListener {
@@ -29,33 +31,27 @@ public class MainActivity extends ActionBarActivity implements OnInitListener {
 	private SoundPool mSoundPool;
 	private int mSoundId;
 
-	// Timer
-	TextView timer_second;
-	TextView timer_minute;
-	Button start, stop;
-	MyCountDownTimer cdt;
-	boolean notice_flag = false;
 
-	//tts
-	TextToSpeech tts;
+	//MediaPlayer
+	private MediaPlayer mMediaPlayer;
+
+	// Timer
+	private TextView timer_second;
+	private TextView timer_minute;
+	private Button start, stop;
+	private MyCountDownTimer cdt;
+	private boolean notice_flag = false;
+
+	// tts
+	private TextToSpeech tts;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		//TTS
+		// TTS
 		tts = new TextToSpeech(this, this);
-
-
-		// 効果音
-		findViewById(R.id.lightning_sound).setOnClickListener(
-				new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						playFromSoundPool();
-					}
-				});
 
 		// BGM
 		findViewById(R.id.opening_bgm).setOnClickListener(
@@ -66,20 +62,86 @@ public class MainActivity extends ActionBarActivity implements OnInitListener {
 					}
 				});
 
+		findViewById(R.id.confirm_bgm).setOnClickListener(
+				new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						playFromMediaPlayer(R.raw.confirm);
+					}
+				});
+		findViewById(R.id.morning_bgm).setOnClickListener(
+				new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						playFromMediaPlayer(R.raw.morning);
+					}
+				});
+		findViewById(R.id.discussion_bgm).setOnClickListener(
+				new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						playFromMediaPlayer(R.raw.discussion);
+					}
+				});
+		findViewById(R.id.vote_bgm).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				playFromMediaPlayer(R.raw.vote);
+			}
+		});
+		findViewById(R.id.execution_bgm).setOnClickListener(
+				new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						playFromMediaPlayer(R.raw.execution);
+					}
+				});
+		findViewById(R.id.night_bgm).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				playFromMediaPlayer(R.raw.night);
+			}
+		});
+
 		// タイマー
-		timer_second = (TextView) findViewById(R.id.time_second_text_id);
 		timer_minute = (TextView) findViewById(R.id.time_minute_text_id);
+		timer_second = (TextView) findViewById(R.id.time_second_text_id);
 		start = (Button) findViewById(R.id.start_button_id);
 		stop = (Button) findViewById(R.id.stop_button_id);
+
+		findViewById(R.id.time_set_view_id).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				int exist_min = Integer.parseInt( timer_minute.getText().toString());
+				int exist_sec =  Integer.parseInt( timer_second.getText().toString());
+
+		        TimePickerDialog timepick= new TimePickerDialog(
+		        		MainActivity.this,
+		                new TimePickerDialog.OnTimeSetListener() {
+		                    public void onTimeSet(TimePicker view,   int minute, int second) {
+		            			timer_minute.setText(String.format("%02d", minute));
+		            			timer_second.setText(String.format("%02d", second));
+		                        }
+		                },
+		                exist_min,
+		                exist_sec,
+		                true);
+
+		            // 表示
+		            timepick.show();
+			}
+		});
+
 
 		// CountDownの初期値
 		start.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				start.setEnabled(false);
 				stop.setEnabled(true);
-				String s = timer_second.getText().toString();
 				String m = timer_minute.getText().toString();
-				long init_time =  Long.parseLong(s) * 60 * 1000 + Long.parseLong(m) * 1000 ;
+				String s = timer_second.getText().toString();
+				long init_time = Long.parseLong(m) * 60 * 1000
+						+ Long.parseLong(s) * 1000;
 				cdt = new MyCountDownTimer(init_time, 500);
 				cdt.start();
 			}
@@ -89,7 +151,7 @@ public class MainActivity extends ActionBarActivity implements OnInitListener {
 			public void onClick(View v) {
 				stop.setEnabled(false);
 				start.setEnabled(true);
-				if (cdt != null){
+				if (cdt != null) {
 					cdt.cancel();
 					cdt = null;
 				}
@@ -137,18 +199,19 @@ public class MainActivity extends ActionBarActivity implements OnInitListener {
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-        if (null != tts) {
-            tts.shutdown();
-        }
+		if (null != tts) {
+			tts.shutdown();
+		}
 	}
+
 	@Override
 	public void onInit(int status) {
-        if (TextToSpeech.SUCCESS == status) {
-            Locale locale = Locale.ENGLISH;
-            if (tts.isLanguageAvailable(locale) >= TextToSpeech.LANG_AVAILABLE) {
-                tts.setLanguage(locale);
-            }
-        }
+		if (TextToSpeech.SUCCESS == status) {
+			Locale locale = Locale.ENGLISH;
+			if (tts.isLanguageAvailable(locale) >= TextToSpeech.LANG_AVAILABLE) {
+				tts.setLanguage(locale);
+			}
+		}
 	}
 
 	private void playFromSoundPool() {
@@ -156,19 +219,23 @@ public class MainActivity extends ActionBarActivity implements OnInitListener {
 	}
 
 	private void playFromMediaPlayer(int resid) {
-		MediaPlayer mMediaPlayer = MediaPlayer.create(this, resid);
+		if (mMediaPlayer != null ){
+			mMediaPlayer.stop();
+		}
+		mMediaPlayer = null;
+		mMediaPlayer = MediaPlayer.create(this, resid);
 		mMediaPlayer.start();
+
 	}
 
 	private void speechText(String string) {
-        if (0 < string.length()) {
-            if (tts.isSpeaking()) {
-                tts.stop();
-            }
-            tts.speak(string, TextToSpeech.QUEUE_FLUSH, null);
-        }
-    }
-
+		if (0 < string.length()) {
+			if (tts.isSpeaking()) {
+				tts.stop();
+			}
+			tts.speak(string, TextToSpeech.QUEUE_FLUSH, null);
+		}
+	}
 
 	public class MyCountDownTimer extends CountDownTimer {
 		public MyCountDownTimer(long millisInFuture, long countDownInterval) {
@@ -185,21 +252,18 @@ public class MainActivity extends ActionBarActivity implements OnInitListener {
 
 		@Override
 		public void onTick(long millisUntilFinished) {
-			timer_second
-					.setText(Long.toString(millisUntilFinished / 1000 / 60));
 			timer_minute
-					.setText(Long.toString(millisUntilFinished / 1000 % 60));
+					.setText(String.format("%02d", (millisUntilFinished / 1000 / 60)));
+			timer_second
+					.setText(String.format("%02d", (millisUntilFinished / 1000 % 60)));
 
-			if( notice_flag == false && millisUntilFinished < 60 * 1000  ){
+			if (notice_flag == false && millisUntilFinished < 60 * 1000) {
 				notice_flag = true;
+				playFromSoundPool();
 				speechText("のこり一分です");
 			}
 		}
 
-
 	}
-
-
-
 
 }
