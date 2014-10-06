@@ -1077,7 +1077,11 @@ containing a value of this type.
         public static final int abc_textfield_searchview_holo_light=0x7f020054;
         public static final int abc_textfield_searchview_right_holo_dark=0x7f020055;
         public static final int abc_textfield_searchview_right_holo_light=0x7f020056;
-        public static final int ic_launcher=0x7f020057;
+        public static final int bg=0x7f020057;
+        public static final int btn_3_5minites=0x7f020058;
+        public static final int btn_all=0x7f020059;
+        public static final int ic_launcher=0x7f02005a;
+        public static final int text_color=0x7f02005b;
     }
     public static final class id {
         public static final int ScrollView=0x7f06003c;
@@ -1308,7 +1312,6 @@ containing a value of this type.
          */
         public static final int AppBaseTheme=0x7f0c008b;
         /**  Application theme. 
- All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f0c008c;
         /**  Mimic text appearance in select_dialog_item.xml 
