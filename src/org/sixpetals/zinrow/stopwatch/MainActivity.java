@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Chronometer;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -31,14 +32,14 @@ public class MainActivity extends ActionBarActivity implements OnInitListener {
 	private SoundPool mSoundPool;
 	private int mSoundId;
 
-
-	//MediaPlayer
+	// MediaPlayer
 	private MediaPlayer mMediaPlayer;
 
 	// Timer
 	private TextView timer_second;
 	private TextView timer_minute;
 	private Button start, stop;
+	private LinearLayout editGroup;
 	private MyCountDownTimer cdt;
 	private boolean notice_flag = false;
 
@@ -61,7 +62,6 @@ public class MainActivity extends ActionBarActivity implements OnInitListener {
 						playFromMediaPlayer(R.raw.opening);
 					}
 				});
-
 		findViewById(R.id.confirm_bgm).setOnClickListener(
 				new OnClickListener() {
 					@Override
@@ -103,41 +103,73 @@ public class MainActivity extends ActionBarActivity implements OnInitListener {
 			}
 		});
 
+		findViewById(R.id.victory_warewolf_bgm).setOnClickListener(
+				new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						playFromMediaPlayer(R.raw.victory_warewolf);
+					}
+				});
+
+		findViewById(R.id.victory_villager_bgm).setOnClickListener(
+				new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						playFromMediaPlayer(R.raw.victory_villager);
+					}
+				});
+
+		findViewById(R.id.victory_thirdparty_bgm).setOnClickListener(
+				new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						playFromMediaPlayer(R.raw.victory_thirdparty);
+					}
+				});
+
 		// タイマー
 		timer_minute = (TextView) findViewById(R.id.time_minute_text_id);
 		timer_second = (TextView) findViewById(R.id.time_second_text_id);
 		start = (Button) findViewById(R.id.start_button_id);
 		stop = (Button) findViewById(R.id.stop_button_id);
+		editGroup = (LinearLayout)findViewById(R.id.edit_buttons_id);
 
-		findViewById(R.id.time_set_view_id).setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				int exist_min = Integer.parseInt( timer_minute.getText().toString());
-				int exist_sec =  Integer.parseInt( timer_second.getText().toString());
+		findViewById(R.id.time_set_view_id).setOnClickListener(
+				new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						int exist_min = Integer.parseInt(timer_minute.getText()
+								.toString());
+						int exist_sec = Integer.parseInt(timer_second.getText()
+								.toString());
 
-		        TimePickerDialog timepick= new TimePickerDialog(
-		        		MainActivity.this,
-		                new TimePickerDialog.OnTimeSetListener() {
-		                    public void onTimeSet(TimePicker view,   int minute, int second) {
-		            			timer_minute.setText(String.format("%02d", minute));
-		            			timer_second.setText(String.format("%02d", second));
-		                        }
-		                },
-		                exist_min,
-		                exist_sec,
-		                true);
+						TimePickerDialog timepick = new TimePickerDialog(
+								MainActivity.this,
+								new TimePickerDialog.OnTimeSetListener() {
+									public void onTimeSet(TimePicker view,
+											int minute, int second) {
+										timer_minute.setText(String.format(
+												"%02d", minute));
+										timer_second.setText(String.format(
+												"%02d", second));
+									}
+								}, exist_min, exist_sec, true);
 
-		            // 表示
-		            timepick.show();
-			}
-		});
-
+						// 表示
+						timepick.show();
+					}
+				});
 
 		// CountDownの初期値
+		stop.setEnabled(false);
+		start.setEnabled(true);
+		editGroup.setVisibility(View.VISIBLE) ;
+
 		start.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				start.setEnabled(false);
 				stop.setEnabled(true);
+				editGroup.setVisibility(View.INVISIBLE)   ;
 				String m = timer_minute.getText().toString();
 				String s = timer_second.getText().toString();
 				long init_time = Long.parseLong(m) * 60 * 1000
@@ -151,6 +183,7 @@ public class MainActivity extends ActionBarActivity implements OnInitListener {
 			public void onClick(View v) {
 				stop.setEnabled(false);
 				start.setEnabled(true);
+				editGroup.setVisibility(View.VISIBLE);
 				if (cdt != null) {
 					cdt.cancel();
 					cdt = null;
@@ -219,7 +252,7 @@ public class MainActivity extends ActionBarActivity implements OnInitListener {
 	}
 
 	private void playFromMediaPlayer(int resid) {
-		if (mMediaPlayer != null ){
+		if (mMediaPlayer != null) {
 			mMediaPlayer.stop();
 		}
 		mMediaPlayer = null;
@@ -252,10 +285,10 @@ public class MainActivity extends ActionBarActivity implements OnInitListener {
 
 		@Override
 		public void onTick(long millisUntilFinished) {
-			timer_minute
-					.setText(String.format("%02d", (millisUntilFinished / 1000 / 60)));
-			timer_second
-					.setText(String.format("%02d", (millisUntilFinished / 1000 % 60)));
+			timer_minute.setText(String.format("%02d",
+					(millisUntilFinished / 1000 / 60)));
+			timer_second.setText(String.format("%02d",
+					(millisUntilFinished / 1000 % 60)));
 
 			if (notice_flag == false && millisUntilFinished < 60 * 1000) {
 				notice_flag = true;

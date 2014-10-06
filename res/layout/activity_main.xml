@@ -18,68 +18,166 @@
             android:gravity="top|center_horizontal"
             android:orientation="vertical" >
 
-            <Button
-                android:id="@+id/opening_bgm"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                style="@style/AppTheme"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/btn_all"
-                android:text="@string/openning_bgm_button"
-                android:textColor="@drawable/text_color" />
+                android:layout_gravity="top|center_horizontal"
+                android:clickable="true"
+                android:gravity="top|fill_horizontal"
+                android:orientation="horizontal" >
 
-            <Button
-                android:id="@+id/confirm_bgm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/btn_all"
-                android:text="@string/confirm_bgm_button"
-                android:textColor="@drawable/text_color" />
+                <Button
+                    android:id="@+id/opening_bgm"
 
-            <Button
-                android:id="@+id/morning_bgm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/btn_all"
-                android:text="@string/morning_bgm_button"
-                android:textColor="@drawable/text_color" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:background="@drawable/btn_all"
+                    android:text="@string/openning_bgm_button"
+                    android:textColor="@drawable/text_color" />
 
-            <Button
-                android:id="@+id/discussion_bgm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/btn_all"
-                android:text="@string/discussion_bgm_button"
-                android:textColor="@drawable/text_color" />
+                <Button
+                    android:id="@+id/confirm_bgm"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_all"
+                    android:text="@string/confirm_bgm_button"
+                    android:textColor="@drawable/text_color" />
+            </LinearLayout>
 
-            <Button
-                android:id="@+id/vote_bgm"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                style="@style/AppTheme"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/btn_all"
-                android:text="@string/vote_bgm_button"
-                android:textColor="@drawable/text_color" />
+                android:layout_gravity="top|center_horizontal"
+                android:clickable="true"
+                android:gravity="top|fill_horizontal"
+                android:orientation="horizontal" >
 
-            <Button
-                android:id="@+id/execution_bgm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/btn_all"
-                android:text="@string/execution_bgm_button"
-                android:textColor="@drawable/text_color" />
+                <Button
+                    android:id="@+id/morning_bgm"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_all"
+                    android:text="@string/morning_bgm_button"
+                    android:textColor="@drawable/text_color" />
 
-            <Button
-                android:id="@+id/night_bgm"
-                android:layout_width="wrap_content"
+                <Button
+                    android:id="@+id/discussion_bgm"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_all"
+                    android:text="@string/discussion_bgm_button"
+                    android:textColor="@drawable/text_color" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/AppTheme"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/btn_all"
-                android:text="@string/night_bgm_button"
-                android:textColor="@drawable/text_color" />
+                android:layout_gravity="top|center_horizontal"
+                android:clickable="true"
+                android:gravity="top|fill_horizontal"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/vote_bgm"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_all"
+                    android:text="@string/vote_bgm_button"
+                    android:textColor="@drawable/text_color" />
+
+                <Button
+                    android:id="@+id/execution_bgm"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_all"
+                    android:text="@string/execution_bgm_button"
+                    android:textColor="@drawable/text_color" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/AppTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|center_horizontal"
+                android:clickable="true"
+                android:gravity="top|fill_horizontal"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/night_bgm"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_all"
+                    android:text="@string/night_bgm_button"
+                    android:textColor="@drawable/text_color" />
+
+                <TextView
+                    android:id="@+id/space"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:text="" >
+                </TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/AppTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|center_horizontal"
+                android:clickable="true"
+                android:gravity="top|fill_horizontal"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/victory_warewolf_bgm"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_all"
+                    android:text="@string/victory_warewolf_bgm_button"
+                    android:textColor="@drawable/text_color" />
+
+                <Button
+                    android:id="@+id/victory_villager_bgm"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_all"
+                    android:text="@string/victory_villager_bgm_button"
+                    android:textColor="@drawable/text_color" />
+
+                <Button
+                    android:id="@+id/victory_thirdparty_bgm"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_all"
+                    android:text="@string/victory_thirdparty_bgm_button"
+                    android:textColor="@drawable/text_color" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -143,6 +241,63 @@
                 android:text="@string/stop_button_label"
                 android:textColor="@drawable/text_color" />
         </LinearLayout>
+                <LinearLayout
+                                    android:id="@+id/edit_buttons_id"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:gravity="top|center_horizontal"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/reset_button_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_3_5minites"
+                android:text="@string/reset_button_label"
+                android:textColor="@drawable/text_color" />
+                <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:gravity="top|center_horizontal"
+            android:orientation="horizontal" >
+            <Button
+                android:id="@+id/minute_plus_button_id"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_3_5minites"
+                android:text="@string/minute_plus_button_label"
+                android:textColor="@drawable/text_color" />
+            <Button
+                android:id="@+id/second_plus_button_id"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_3_5minites"
+                android:text="@string/second_plus_button_label"
+                android:textColor="@drawable/text_color" />
+                        <Button
+                android:id="@+id/minute_minus_button_id"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_3_5minites"
+                android:text="@string/minute_minus_button_label"
+                android:textColor="@drawable/text_color" />
+                                    <Button
+                android:id="@+id/second_minus_button_id"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_3_5minites"
+                android:text="@string/second_minus_button_label"
+                android:textColor="@drawable/text_color" />
+
+            </LinearLayout>
+        </LinearLayout>
+
     </LinearLayout>
 
 </ScrollView>

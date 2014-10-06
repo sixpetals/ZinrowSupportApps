@@ -6,20 +6,25 @@
 
     <string name="lightning_se_button">かみなり</string>
 
-	<string name="openning_bgm_button">オープニング</string>
+	<string name="openning_bgm_button">準備</string>
 	<string name="confirm_bgm_button">役職確認</string>
-	<string name="discussion_bgm_button">疑惑の会議</string>
-	<string name="vote_bgm_button">最終審判</string>
-	<string name="execution_bgm_button">処刑の執行</string>
-	<string name="morning_bgm_button">	犠牲者の朝</string>
-	<string name="night_bgm_button">漆黒の夜</string>
+	<string name="discussion_bgm_button">議論</string>
+	<string name="vote_bgm_button">投票</string>
+	<string name="execution_bgm_button">処刑</string>
+	<string name="night_bgm_button">夜</string>
+	<string name="morning_bgm_button">	朝</string>
+
+	<string name="victory_warewolf_bgm_button">人狼勝利</string>
+	<string name="victory_villager_bgm_button">	村人勝利</string>
+	<string name="victory_thirdparty_bgm_button">第三勝利</string>
 
 	<string name="timer_format">%s</string>
 	<string name="start_button_label">スタート</string>
 	<string name="stop_button_label">ストップ</string>
 	<string name="reset_button_label">リセット</string>
+	<string name="minute_plus_button_label">+1分</string>
+	<string name="second_plus_button_label">+10秒</string>
+		<string name="minute_minus_button_label">-1分</string>
+	<string name="second_minus_button_label">-10秒</string>
 
-
-	<string name="second_button_label">+1分</string>
-	<string name="minuts_button_label">+10秒</string>
 </resources>
