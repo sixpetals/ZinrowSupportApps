@@ -11,8 +11,9 @@
 	<string name="discussion_bgm_button">議論</string>
 	<string name="vote_bgm_button">投票</string>
 	<string name="execution_bgm_button">処刑</string>
-	<string name="night_bgm_button">夜</string>
-	<string name="morning_bgm_button">	朝</string>
+	<string name="night_bgm_button">夜の儀式</string>
+	<string name="morning_bgm_button">	朝の儀式</string>
+	<string name="no_bgm_button">BGM停止</string>
 
 	<string name="victory_warewolf_bgm_button">人狼勝利</string>
 	<string name="victory_villager_bgm_button">	村人勝利</string>

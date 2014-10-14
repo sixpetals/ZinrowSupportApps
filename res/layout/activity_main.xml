@@ -29,11 +29,10 @@
 
                 <Button
                     android:id="@+id/opening_bgm"
-
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:layout_weight="1"
-                    android:layout_width="0dp"
                     android:background="@drawable/btn_all"
                     android:text="@string/openning_bgm_button"
                     android:textColor="@drawable/text_color" />
@@ -128,15 +127,16 @@
                     android:text="@string/night_bgm_button"
                     android:textColor="@drawable/text_color" />
 
-                <TextView
-                    android:id="@+id/space"
+                <Button
+                    android:id="@+id/no_bgm"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:layout_weight="1"
-                    android:background="@null"
-                    android:text="" >
-                </TextView>
+                    android:background="@drawable/btn_all"
+                    android:text="@string/no_bgm_button"
+                    android:textColor="@drawable/text_color"  >
+                </Button>
             </LinearLayout>
 
             <LinearLayout
@@ -241,8 +241,9 @@
                 android:text="@string/stop_button_label"
                 android:textColor="@drawable/text_color" />
         </LinearLayout>
-                <LinearLayout
-                                    android:id="@+id/edit_buttons_id"
+
+        <LinearLayout
+            android:id="@+id/edit_buttons_id"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="top|center_horizontal"
@@ -256,48 +257,51 @@
                 android:background="@drawable/btn_3_5minites"
                 android:text="@string/reset_button_label"
                 android:textColor="@drawable/text_color" />
-                <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top|center_horizontal"
-            android:gravity="top|center_horizontal"
-            android:orientation="horizontal" >
-            <Button
-                android:id="@+id/minute_plus_button_id"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/btn_3_5minites"
-                android:text="@string/minute_plus_button_label"
-                android:textColor="@drawable/text_color" />
-            <Button
-                android:id="@+id/second_plus_button_id"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/btn_3_5minites"
-                android:text="@string/second_plus_button_label"
-                android:textColor="@drawable/text_color" />
-                        <Button
-                android:id="@+id/minute_minus_button_id"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/btn_3_5minites"
-                android:text="@string/minute_minus_button_label"
-                android:textColor="@drawable/text_color" />
-                                    <Button
-                android:id="@+id/second_minus_button_id"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/btn_3_5minites"
-                android:text="@string/second_minus_button_label"
-                android:textColor="@drawable/text_color" />
 
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|center_horizontal"
+                android:gravity="top|center_horizontal"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/minute_plus_button_id"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_3_5minites"
+                    android:text="@string/minute_plus_button_label"
+                    android:textColor="@drawable/text_color" />
+
+                <Button
+                    android:id="@+id/second_plus_button_id"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_3_5minites"
+                    android:text="@string/second_plus_button_label"
+                    android:textColor="@drawable/text_color" />
+
+                <Button
+                    android:id="@+id/minute_minus_button_id"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_3_5minites"
+                    android:text="@string/minute_minus_button_label"
+                    android:textColor="@drawable/text_color" />
+
+                <Button
+                    android:id="@+id/second_minus_button_id"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_3_5minites"
+                    android:text="@string/second_minus_button_label"
+                    android:textColor="@drawable/text_color" />
             </LinearLayout>
         </LinearLayout>
-
     </LinearLayout>
 
 </ScrollView>

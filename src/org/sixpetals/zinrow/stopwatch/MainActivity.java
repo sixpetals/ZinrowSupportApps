@@ -103,6 +103,13 @@ public class MainActivity extends ActionBarActivity implements OnInitListener {
 			}
 		});
 
+		findViewById(R.id.no_bgm).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				stopMediaPlayer();
+			}
+		});
+
 		findViewById(R.id.victory_warewolf_bgm).setOnClickListener(
 				new OnClickListener() {
 					@Override
@@ -160,6 +167,82 @@ public class MainActivity extends ActionBarActivity implements OnInitListener {
 					}
 				});
 
+		//１分プラス
+		findViewById(R.id.minute_plus_button_id).setOnClickListener(
+				new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						int exist_min = Integer.parseInt(timer_minute.getText().toString());
+						timer_minute.setText(String.format("%02d", exist_min+1));
+					}
+				}
+		);
+
+		// 10秒プラス
+		findViewById(R.id.second_plus_button_id).setOnClickListener(
+				new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						int exist_min = Integer.parseInt(timer_minute.getText().toString());
+						int exist_sec = Integer.parseInt(timer_second.getText().toString());
+						int new_sec = exist_sec+10;
+						if  (new_sec > 59){
+							timer_minute.setText(String.format("%02d",exist_min+1));
+							new_sec = 0;
+						}
+						timer_second.setText(String.format("%02d",new_sec));
+					}
+				}
+		);
+
+		//1分マイナス
+		findViewById(R.id.minute_minus_button_id).setOnClickListener(
+				new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						int exist_min = Integer.parseInt(timer_minute.getText().toString());
+						int new_min = exist_min-1;
+						if  (new_min < 0){
+							new_min = 0;
+						}
+						timer_minute.setText(String.format("%02d", new_min));
+					}
+				}
+		);
+
+		findViewById(R.id.second_minus_button_id).setOnClickListener(
+				new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						int exist_min = Integer.parseInt(timer_minute.getText().toString());
+						int exist_sec = Integer.parseInt(timer_second.getText().toString());
+						int new_sec = exist_sec-10;
+						if  (new_sec < 0){
+							int new_min = exist_min -1;
+							if( new_min < 0) {
+								new_min = 0;
+								new_sec = 0;
+							}else{
+								new_sec = 50;
+							}
+							timer_minute.setText(String.format("%02d",new_min));
+
+						}
+						timer_second.setText(String.format("%02d",new_sec));
+					}
+				}
+		);
+
+		findViewById(R.id.reset_button_id).setOnClickListener(
+				new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						timer_minute.setText(String.format("%02d",5));
+						timer_second.setText(String.format("%02d",0));
+					}
+				}
+		);
+
 		// CountDownの初期値
 		stop.setEnabled(false);
 		start.setEnabled(true);
@@ -200,6 +283,7 @@ public class MainActivity extends ActionBarActivity implements OnInitListener {
 		return true;
 	}
 
+	/*
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle action bar item clicks here. The action bar will
@@ -211,6 +295,7 @@ public class MainActivity extends ActionBarActivity implements OnInitListener {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	*/
 
 	public void playFromSoundPool(View view) {
 		this.mSoundPool.play(this.mSoundId, 1.0f, 1.0f, 0, 0, 1.0f);
@@ -257,8 +342,14 @@ public class MainActivity extends ActionBarActivity implements OnInitListener {
 		}
 		mMediaPlayer = null;
 		mMediaPlayer = MediaPlayer.create(this, resid);
-		mMediaPlayer.start();
 
+		mMediaPlayer.start();
+	}
+
+	private void stopMediaPlayer() {
+		if (mMediaPlayer != null) {
+			mMediaPlayer.stop();
+		}
 	}
 
 	private void speechText(String string) {
