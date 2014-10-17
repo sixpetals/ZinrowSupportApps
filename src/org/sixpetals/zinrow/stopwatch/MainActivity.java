@@ -1,6 +1,7 @@
 package org.sixpetals.zinrow.stopwatch;
 
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.Locale;
 
 import android.speech.tts.TextToSpeech;
@@ -30,7 +31,7 @@ public class MainActivity extends ActionBarActivity implements OnInitListener {
 
 	// SoundPool
 	private SoundPool mSoundPool;
-	private int mSoundId;
+	private HashMap<Integer,Integer> soundHash = new HashMap<Integer,Integer>();
 
 	// MediaPlayer
 	private MediaPlayer mMediaPlayer;
@@ -41,7 +42,8 @@ public class MainActivity extends ActionBarActivity implements OnInitListener {
 	private Button start, stop;
 	private LinearLayout editGroup;
 	private MyCountDownTimer cdt;
-	private boolean notice_flag = false;
+	private boolean notice5_flag = false;
+	private boolean finished_flag = false;
 
 	// tts
 	private TextToSpeech tts;
@@ -53,6 +55,10 @@ public class MainActivity extends ActionBarActivity implements OnInitListener {
 
 		// TTS
 		tts = new TextToSpeech(this, this);
+
+		//SE
+
+
 
 		// BGM
 		findViewById(R.id.opening_bgm).setOnClickListener(
@@ -297,15 +303,14 @@ public class MainActivity extends ActionBarActivity implements OnInitListener {
 	}
 	*/
 
-	public void playFromSoundPool(View view) {
-		this.mSoundPool.play(this.mSoundId, 1.0f, 1.0f, 0, 0, 1.0f);
-	}
+
 
 	@Override
 	protected void onResume() {
 		super.onResume();
 		this.mSoundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
-		this.mSoundId = this.mSoundPool.load(this, R.raw.lightning, 1);
+		soundHash.put(R.raw.lightning, this.mSoundPool.load(this, R.raw.lightning, 1));
+		soundHash.put(R.raw.clock_bell, this.mSoundPool.load(this, R.raw.clock_bell, 1));
 	}
 
 	@Override
@@ -332,8 +337,12 @@ public class MainActivity extends ActionBarActivity implements OnInitListener {
 		}
 	}
 
-	private void playFromSoundPool() {
-		mSoundPool.play(mSoundId, 1.0F, 1.0F, 0, 0, 1.0F);
+	public void playFromSoundPool(View view, int resId) {
+			this.mSoundPool.play(soundHash.get( resId), 1.0f, 1.0f, 0, 0, 1.0f);
+		}
+
+	private void playFromSoundPool(int resId) {
+		mSoundPool.play( soundHash.get( resId), 1.0F, 1.0F, 0, 0, 1.0F);
 	}
 
 	private void playFromMediaPlayer(int resid) {
@@ -371,7 +380,8 @@ public class MainActivity extends ActionBarActivity implements OnInitListener {
 		public void onFinish() {
 			timer_second.setText("00");
 			timer_minute.setText("00");
-			notice_flag = false;
+			notice5_flag = false;
+			finished_flag = false;
 		}
 
 		@Override
@@ -381,10 +391,14 @@ public class MainActivity extends ActionBarActivity implements OnInitListener {
 			timer_second.setText(String.format("%02d",
 					(millisUntilFinished / 1000 % 60)));
 
-			if (notice_flag == false && millisUntilFinished < 60 * 1000) {
-				notice_flag = true;
-				playFromSoundPool();
+			if (notice5_flag == false && millisUntilFinished < 65 * 1000 && millisUntilFinished > 60 * 1000) {
+				notice5_flag = true;
+				playFromSoundPool(R.raw.lightning);
 				speechText("のこり一分です");
+			}else if(finished_flag == false && millisUntilFinished < 5 * 1000) {
+				finished_flag = true;
+				playFromSoundPool(R.raw.clock_bell);
+				speechText("時間になりました");
 			}
 		}
 
