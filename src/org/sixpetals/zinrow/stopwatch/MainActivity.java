@@ -351,7 +351,7 @@ public class MainActivity extends ActionBarActivity implements OnInitListener {
 		}
 		mMediaPlayer = null;
 		mMediaPlayer = MediaPlayer.create(this, resid);
-
+		mMediaPlayer.setLooping(true);
 		mMediaPlayer.start();
 	}
 
