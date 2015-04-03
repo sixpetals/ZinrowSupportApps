@@ -28,4 +28,10 @@
 	<string name="minute_minus_button_label">-1分</string>
 	<string name="second_minus_button_label">-10秒</string>
 
+    <string name="setting_experimental">実験的</string>
+    <string name="setting_smart_light">スマート電球連携</string>
+    <string name="setting_smart_light_summary">シーンに応じてスマート電球と連携する</string>
+    <string name="setting_smart_light_title">電球の種類</string>
+    <string name="setting_smart_light_none">使用しない</string>
+    <string name="setting_smart_light_nexturn">NEXTURN</string>
 </resources>
