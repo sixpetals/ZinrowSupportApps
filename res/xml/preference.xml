@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference
+        android:key="smart_list"
+        android:title="@string/setting_smart_light"
+        android:summary="@string/setting_smart_light_summary"
+        android:entries="@array/setting_smart_light_names"
+        android:entryValues="@array/setting_smart_light_ids"
+        android:dialogTitle="@string/setting_smart_light_title" />
+</PreferenceScreen>

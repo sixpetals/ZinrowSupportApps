@@ -1,0 +1,21 @@
+{
+	id : "Werewolf" ,
+	default_name : {
+		display_name : "人狼" ,
+		yomigana : "じんろう" ,
+	},
+	intro : {
+	    laed_role : null,
+		check_list : [ "この役職者全員を起こす","お互いを確認させる","役職のメモをとる" ] ,
+		remarks : "",
+		follow_role : null,
+	}
+	dawn : null ,
+	night : {
+	    laed_role : null,
+		check_list : [ "この役職者全員を起こす","襲撃先を確認する" ] ,
+		remarks : "",
+		follow_role : null,
+	}
+	morning : null ,
+}
