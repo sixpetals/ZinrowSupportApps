@@ -7,4 +7,5 @@
         android:entries="@array/setting_smart_light_names"
         android:entryValues="@array/setting_smart_light_ids"
         android:dialogTitle="@string/setting_smart_light_title" />
+
 </PreferenceScreen>

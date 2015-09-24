@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/sub_time_set_view_id"
+        style="@style/AppTheme"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:clickable="true"
+        android:gravity="top|center_horizontal"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:textColor="#ffffff"
+            android:id="@+id/sub_time_minute_text_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:format="@string/timer_format"
+            android:text="05"
+            android:textSize="60sp" />
+
+        <TextView
+            android:textColor="#ffffff"
+            android:id="@+id/sub_time_sepalater_text_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:format="@string/timer_format"
+            android:text=":"
+            android:textSize="60sp" />
+
+        <TextView
+            android:textColor="#ffffff"
+            android:id="@+id/sub_time_second_text_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:format="@string/timer_format"
+            android:text="00"
+            android:textSize="60sp" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -3,13 +3,31 @@ package org.sixpetals.zinrow.stopwatch;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.UUID;
 
+import android.app.Presentation;
+import android.content.Context;
+import android.hardware.display.DisplayManager;
+import android.os.Handler;
+
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothGatt;
+import android.bluetooth.BluetoothGattCallback;
+import android.bluetooth.BluetoothGattCharacteristic;
+import android.bluetooth.BluetoothGattDescriptor;
+import android.bluetooth.BluetoothGattService;
+import android.bluetooth.BluetoothManager;
+import android.bluetooth.BluetoothProfile;
 import android.content.Intent;
+import android.os.Message;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.TextToSpeech.OnInitListener;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
+import android.view.Display;
 import android.view.Menu;
 import android.app.TimePickerDialog;
 import android.media.AudioManager;
@@ -35,11 +53,15 @@ public class MainActivity extends ActionBarActivity implements OnInitListener {
 	// Timer
 	private TextView timer_second;
 	private TextView timer_minute;
+	private TextView sub_timer_second;
+	private TextView sub_timer_minute;
+
 	private Button start, stop;
 	private LinearLayout editGroup;
 	private MyCountDownTimer cdt;
 	private boolean notice5_flag = false;
 	private boolean finished_flag = false;
+	private DisplayManager mDisplayManager;
 
 	// tts
 	private TextToSpeech tts;
@@ -49,6 +71,17 @@ public class MainActivity extends ActionBarActivity implements OnInitListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+
+		//サブディスプレイ
+		mDisplayManager = (DisplayManager)getSystemService(Context.DISPLAY_SERVICE);
+		Display[] displays = mDisplayManager.getDisplays();
+		if (displays.length > 1) {
+			for (Display display : displays) {
+				RemotePresentation presentation = new RemotePresentation(this, display);
+				String name = display.getName();
+				presentation.show();
+			}
+		}
 		// TTS
 		tts = new TextToSpeech(this, this);
 
@@ -139,6 +172,11 @@ public class MainActivity extends ActionBarActivity implements OnInitListener {
 		// タイマー
 		timer_minute = (TextView) findViewById(R.id.time_minute_text_id);
 		timer_second = (TextView) findViewById(R.id.time_second_text_id);
+
+		sub_timer_minute = (TextView) findViewById(R.id.sub_time_minute_text_id);
+		sub_timer_second = (TextView) findViewById(R.id.sub_time_second_text_id);
+
+
 		start = (Button) findViewById(R.id.start_button_id);
 		stop = (Button) findViewById(R.id.stop_button_id);
 		editGroup = (LinearLayout)findViewById(R.id.edit_buttons_id);
@@ -255,7 +293,7 @@ public class MainActivity extends ActionBarActivity implements OnInitListener {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
+		//getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
 
@@ -290,10 +328,17 @@ public class MainActivity extends ActionBarActivity implements OnInitListener {
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-        this.mMediaPlayer.stop();
-        this.mMediaPlayer.release();
-        this.mSoundPool.release();
-		if (null != tts) {
+
+		if(mMediaPlayer != null) {
+			mMediaPlayer.stop();
+			mMediaPlayer.release();
+		}
+
+		if(mSoundPool != null) {
+			mSoundPool.release();
+		}
+
+		if (tts != null) {
 			tts.shutdown();
 		}
 	}
@@ -313,7 +358,7 @@ public class MainActivity extends ActionBarActivity implements OnInitListener {
 		}
 
 	private void playFromSoundPool(int resId) {
-		mSoundPool.play( soundHash.get( resId), 1.0F, 1.0F, 0, 0, 1.0F);
+		mSoundPool.play(soundHash.get(resId), 1.0F, 1.0F, 0, 0, 1.0F);
 	}
 
 	private void playFromMediaPlayer(int resid) {
@@ -348,6 +393,7 @@ public class MainActivity extends ActionBarActivity implements OnInitListener {
 		}
 	}
 
+
 	public class MyCountDownTimer extends CountDownTimer {
 		public MyCountDownTimer(long millisInFuture, long countDownInterval) {
 			super(millisInFuture, countDownInterval);
@@ -358,16 +404,22 @@ public class MainActivity extends ActionBarActivity implements OnInitListener {
 		public void onFinish() {
 			timer_second.setText("00");
 			timer_minute.setText("00");
+			sub_timer_second.setText("00");
+			sub_timer_minute.setText("00");
+
 			notice5_flag = false;
 			finished_flag = false;
 		}
 
 		@Override
 		public void onTick(long millisUntilFinished) {
-			timer_minute.setText(String.format("%02d",
-					(millisUntilFinished / 1000 / 60)));
-			timer_second.setText(String.format("%02d",
-					(millisUntilFinished / 1000 % 60)));
+			String miniute_str = String.format("%02d", (millisUntilFinished / 1000 / 60));
+			String second_str = String.format("%02d",(millisUntilFinished / 1000 % 60));
+			timer_minute.setText(miniute_str);
+			timer_second.setText(second_str);
+			sub_timer_minute.setText(miniute_str);
+			sub_timer_second.setText(second_str);
+
 
 			if (notice5_flag == false && millisUntilFinished < 60 * 1000 && millisUntilFinished > 55 * 1000) {
 				notice5_flag = true;
@@ -382,4 +434,16 @@ public class MainActivity extends ActionBarActivity implements OnInitListener {
 
 	}
 
+	private class RemotePresentation extends Presentation
+	{
+		public RemotePresentation(Context context, Display display) {
+			super(context, display);
+		}
+
+		@Override
+		protected void onCreate(Bundle savedInstanceState) {
+			super.onCreate(savedInstanceState);
+			setContentView(R.layout.subdisplay_main);
+		}
+	}
 }

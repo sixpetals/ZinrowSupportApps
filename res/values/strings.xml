@@ -34,4 +34,7 @@
     <string name="setting_smart_light_title">電球の種類</string>
     <string name="setting_smart_light_none">使用しない</string>
     <string name="setting_smart_light_nexturn">NEXTURN</string>
+
+
+
 </resources>
