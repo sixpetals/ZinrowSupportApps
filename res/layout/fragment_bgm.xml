@@ -1,0 +1,184 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_bgm"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="org.sixpetals.zinrow.stopwatch.BgmFragment">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        tools:context="org.sixpetals.zinrow.stopwatch.MainActivity" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:gravity="top|center_horizontal"
+        android:orientation="vertical"
+        android:weightSum="1"
+        android:layout_margin="10dp">
+
+        <Button
+            android:id="@+id/no_bgm"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:minEms="5"
+            android:background="@drawable/button_corners"
+            android:text="@string/no_bgm_button"
+            android:textColor="@drawable/text_color"  >
+        </Button>
+
+        <View android:id="@+id/Separator"
+            android:layout_width="wrap_content"
+            android:background="#A20000"
+            android:layout_height="1dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"
+            >
+        </View>
+
+        <org.apmem.tools.layouts.FlowLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_margin="0dp">
+
+
+            <Button
+                android:id="@+id/opening_bgm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:minEms="5"
+                android:background="@drawable/button_corners"
+                android:text="@string/openning_bgm_button"
+                android:textColor="@drawable/text_color">
+            </Button>
+
+
+            <Button
+                android:id="@+id/confirm_bgm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:minEms="5"
+                android:background="@drawable/button_corners"
+                android:text="@string/confirm_bgm_button"
+                android:textColor="@drawable/text_color" />
+
+            <Button
+                android:id="@+id/morning_bgm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:minEms="5"
+                android:background="@drawable/button_corners"
+                android:text="@string/morning_bgm_button"
+                android:textColor="@drawable/text_color" />
+
+            <Button
+                android:id="@+id/discussion_bgm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:minEms="5"
+                android:background="@drawable/button_corners"
+                android:text="@string/discussion_bgm_button"
+                android:textColor="@drawable/text_color" />
+
+
+            <Button
+                android:id="@+id/vote_bgm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:minEms="5"
+                android:background="@drawable/button_corners"
+                android:text="@string/vote_bgm_button"
+                android:textColor="@drawable/text_color" />
+
+            <Button
+                android:id="@+id/execution_bgm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:minEms="5"
+                android:background="@drawable/button_corners"
+                android:text="@string/execution_bgm_button"
+                android:textColor="@drawable/text_color" />
+
+            <Button
+                android:id="@+id/night_bgm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:minEms="5"
+                android:background="@drawable/button_corners"
+                android:text="@string/night_bgm_button"
+                android:textColor="@drawable/text_color" />
+
+
+        </org.apmem.tools.layouts.FlowLayout>
+
+        <View android:id="@+id/Separator"
+            android:layout_width="wrap_content"
+            android:background="#A20000"
+            android:layout_height="1dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"
+            >
+        </View>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_margin="0dp">
+
+            <Button
+                android:id="@+id/victory_warewolf_bgm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minEms="5"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_corners"
+                android:text="@string/victory_warewolf_bgm_button"
+                android:textColor="@drawable/text_color" />
+
+            <Button
+                android:id="@+id/victory_villager_bgm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:minEms="5"
+                android:background="@drawable/button_corners"
+                android:text="@string/victory_villager_bgm_button"
+                android:textColor="@drawable/text_color" />
+
+            <Button
+                android:id="@+id/victory_thirdparty_bgm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:minEms="5"
+                android:background="@drawable/button_corners"
+                android:text="@string/victory_thirdparty_bgm_button"
+                android:textColor="@drawable/text_color" />
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

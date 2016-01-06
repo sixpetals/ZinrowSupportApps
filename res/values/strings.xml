@@ -6,7 +6,7 @@
 
     <string name="lightning_se_button">かみなり</string>
 
-	<string name="openning_bgm_button">オープニング</string>
+	<string name="openning_bgm_button">プロローグ</string>
 	<string name="confirm_bgm_button">役職確認</string>
 	<string name="discussion_bgm_button">議論タイム</string>
 	<string name="vote_bgm_button">運命の投票</string>
@@ -34,6 +34,9 @@
     <string name="setting_smart_light_title">電球の種類</string>
     <string name="setting_smart_light_none">使用しない</string>
     <string name="setting_smart_light_nexturn">NEXTURN</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 

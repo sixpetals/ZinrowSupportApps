@@ -1,0 +1,142 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_timer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="org.sixpetals.zinrow.stopwatch.TimerFragment">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        tools:context="org.sixpetals.zinrow.stopwatch.MainActivity" >
+
+        <LinearLayout
+            android:id="@+id/time_set_view_id"
+            style="@style/AppTheme"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:clickable="true"
+            android:gravity="top|center_horizontal"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:textColor="#ffffff"
+                android:id="@+id/time_minute_text_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:format="@string/timer_format"
+                android:text="05"
+                android:textSize="60sp" />
+
+            <TextView
+                android:textColor="#ffffff"
+                android:id="@+id/time_sepalater_text_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:format="@string/timer_format"
+                android:text=":"
+                android:textSize="60sp" />
+
+            <TextView
+                android:textColor="#ffffff"
+                android:id="@+id/time_second_text_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:format="@string/timer_format"
+                android:text="00"
+                android:textSize="60sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:gravity="top|center_horizontal"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/start_button_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_3_5minites"
+                android:text="@string/start_button_label"
+                android:textColor="@drawable/text_color" />
+
+            <Button
+                android:id="@+id/stop_button_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_3_5minites"
+                android:text="@string/stop_button_label"
+                android:textColor="@drawable/text_color" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/edit_buttons_id"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:gravity="top|center_horizontal"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/reset_button_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_3_5minites"
+                android:text="@string/reset_button_label"
+                android:textColor="@drawable/text_color" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|center_horizontal"
+                android:gravity="top|center_horizontal"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/minute_plus_button_id"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_3_5minites"
+                    android:text="@string/minute_plus_button_label"
+                    android:textColor="@drawable/text_color" />
+
+                <Button
+                    android:id="@+id/second_plus_button_id"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_3_5minites"
+                    android:text="@string/second_plus_button_label"
+                    android:textColor="@drawable/text_color" />
+
+                <Button
+                    android:id="@+id/minute_minus_button_id"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_3_5minites"
+                    android:text="@string/minute_minus_button_label"
+                    android:textColor="@drawable/text_color" />
+
+                <Button
+                    android:id="@+id/second_minus_button_id"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_3_5minites"
+                    android:text="@string/second_minus_button_label"
+                    android:textColor="@drawable/text_color" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+</FrameLayout>
