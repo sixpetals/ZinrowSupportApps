@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.UUID;
 
+import android.app.Application;
 import android.app.Presentation;
 import android.content.Context;
 import android.hardware.display.DisplayManager;
@@ -56,7 +57,11 @@ public class MainActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		//サブディスプレイ
+        //メニュー
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+
+        //サブディスプレイ
 		mDisplayManager = (DisplayManager)getSystemService(Context.DISPLAY_SERVICE);
 		Display[] displays = mDisplayManager.getDisplays();
 		if (displays.length > 1) {
@@ -83,6 +88,8 @@ public class MainActivity
 		if (id == R.id.action_settings) {
                 Intent intent = new Intent(this, GeneralPreferenceActivity.class);
                 startActivity(intent);
+		}else if(id == R.id.action_exit){
+			this.moveTaskToBack(true);
 		}
 		return super.onOptionsItemSelected(item);
 	}
