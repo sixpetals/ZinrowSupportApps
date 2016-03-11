@@ -8,13 +8,14 @@ repositories {
 
 dependencies {
     compile fileTree(dir: 'libs', include: '*.jar')
-    compile project(':appcompat_v7')
+    //compile project(':appcompat_v7')
     compile 'org.apmem.tools:layouts:1.10@aar'
-    compile 'com.android.support:support-v4:20.0.0'
+    compile "com.android.support:appcompat-v7:21.0.+"
+    //compile 'com.android.support:support-v4:20.0.0'
 }
 
 android {
-    compileSdkVersion 20
+    compileSdkVersion 21
     buildToolsVersion "20.0.0"
 
     sourceSets {

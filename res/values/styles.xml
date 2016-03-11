@@ -1,12 +1,10 @@
 <resources>
 
 
-    <style name="AppBaseTheme" parent="Theme.AppCompat">
 
-    </style>
 
     <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
+    <style name="ZinrowAppTheme" parent="Theme.AppCompat.NoActionBar">
 
     </style>
 

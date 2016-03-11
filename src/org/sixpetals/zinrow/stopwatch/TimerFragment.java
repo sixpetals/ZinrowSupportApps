@@ -258,8 +258,8 @@ public class TimerFragment extends BaseFragment {
         public void onFinish() {
             timer_second.setText("00");
             timer_minute.setText("00");
-            sub_timer_second.setText("00");
-            sub_timer_minute.setText("00");
+            if(sub_timer_second != null)sub_timer_second.setText("00");
+            if(sub_timer_minute != null)sub_timer_minute.setText("00");
 
             notice5_flag = false;
             finished_flag = false;

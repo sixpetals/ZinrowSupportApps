@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.UUID;
 
+import android.app.Activity;
 import android.app.Application;
 import android.app.Presentation;
 import android.content.Context;
@@ -28,6 +29,7 @@ import android.speech.tts.TextToSpeech.OnInitListener;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Display;
 import android.view.Menu;
@@ -57,8 +59,9 @@ public class MainActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-        //メニュー
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //メニューバー
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
 
         //サブディスプレイ
@@ -77,7 +80,7 @@ public class MainActivity
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		//getMenuInflater().inflate(R.menu.main, menu);
+		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
 

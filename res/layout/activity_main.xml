@@ -5,19 +5,19 @@
     android:layout_height="fill_parent"
     android:background="@drawable/bg" >
 
-    <!--
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"/>
-        -->
-
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical"
         tools:context="org.sixpetals.zinrow.stopwatch.MainActivity" >
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"/>
+
 
         <fragment android:id="@+id/fragment_bgm"
             android:name="org.sixpetals.zinrow.stopwatch.BgmFragment"

@@ -5,7 +5,6 @@
 
     <LinearLayout
         android:id="@+id/sub_time_set_view_id"
-        style="@style/AppTheme"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_gravity="center"
