@@ -77,10 +77,7 @@ public abstract class BaseFragment extends Fragment implements TextToSpeech.OnIn
     public void onAttach (Activity activity) {
         super.onAttach (activity);
 
-        // TTS
-
-            tts = new TextToSpeech(this.getActivity(), this);
-
+        tts = new TextToSpeech(this.getActivity(), this);
     }
 
 
@@ -101,8 +98,6 @@ public abstract class BaseFragment extends Fragment implements TextToSpeech.OnIn
 
     @Override
     public void onDestroy() {
-
-
         if(mMediaPlayer != null) {
             mMediaPlayer.stop();
             mMediaPlayer.release();

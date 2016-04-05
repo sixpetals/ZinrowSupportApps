@@ -1,51 +1,22 @@
 package org.sixpetals.zinrow.stopwatch;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.UUID;
-
-import android.app.Activity;
-import android.app.Application;
 import android.app.Presentation;
 import android.content.Context;
 import android.hardware.display.DisplayManager;
 import android.net.Uri;
-import android.os.Handler;
 
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothGatt;
-import android.bluetooth.BluetoothGattCallback;
-import android.bluetooth.BluetoothGattCharacteristic;
-import android.bluetooth.BluetoothGattDescriptor;
-import android.bluetooth.BluetoothGattService;
-import android.bluetooth.BluetoothManager;
-import android.bluetooth.BluetoothProfile;
 import android.content.Intent;
-import android.os.Message;
-import android.speech.tts.TextToSpeech;
 import android.speech.tts.TextToSpeech.OnInitListener;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Display;
 import android.view.Menu;
-import android.app.TimePickerDialog;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
-import android.media.SoundPool;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.TimePicker;
 
-import android.app.Fragment;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity
 		extends ActionBarActivity
@@ -53,29 +24,43 @@ public class MainActivity
 
 
 	private DisplayManager mDisplayManager;
+	private List<RemotePresentation> subDisplays;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-        //メニューバー
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+		subDisplays = new ArrayList<RemotePresentation>();
+		// メニューバー
+		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+		setSupportActionBar(toolbar);
 
-
-        //サブディスプレイ
+		// サブディスプレイ
 		mDisplayManager = (DisplayManager)getSystemService(Context.DISPLAY_SERVICE);
 		Display[] displays = mDisplayManager.getDisplays();
 		if (displays.length > 1) {
-			for (Display display : displays) {
+			for (int i= 1; i < displays.length ; i++ ) {
+				Display display = displays[i];
 				RemotePresentation presentation = new RemotePresentation(this, display);
 				String name = display.getName();
+				subDisplays.add(presentation);
 				presentation.show();
 			}
 		}
-
 	}
+
+	public void SetTimeToSubDisplay(int minute, int second){
+		for (RemotePresentation presentation : subDisplays) {
+			TextView sub_time_min = (TextView) presentation.findViewById(R.id.sub_time_minute_text_id);
+			sub_time_min.setText(String.format("%02d", minute));
+			TextView sub_time_sec = (TextView) presentation.findViewById(R.id.sub_time_second_text_id);
+			sub_time_sec.setText(String.format("%02d", second));
+
+		}
+	}
+
+
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -117,7 +102,8 @@ public class MainActivity
 		@Override
 		protected void onCreate(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);
-			setContentView(R.layout.subdisplay_main);
+			setContentView(R.layout.fragment_subdisplay);
+
 		}
 	}
 }

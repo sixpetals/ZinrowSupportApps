@@ -66,13 +66,17 @@ public class TimerFragment extends BaseFragment {
         // Inflate the layout for this fragment
         View rootView =  inflater.inflate(R.layout.fragment_timer, container, false);
 
+        //View subView =  inflater.inflate(R.layout.fragment_subdisplay, container, false);
+
         // タイマー
         timer_minute = (TextView) rootView.findViewById(R.id.time_minute_text_id);
         timer_second = (TextView) rootView.findViewById(R.id.time_second_text_id);
 
-        sub_timer_minute = (TextView) rootView.findViewById(R.id.sub_time_minute_text_id);
-        sub_timer_second = (TextView) rootView.findViewById(R.id.sub_time_second_text_id);
 
+        /*
+        sub_timer_minute = (TextView) subView.findViewById(R.id.sub_time_minute_text_id);
+        sub_timer_second = (TextView) subView.findViewById(R.id.sub_time_second_text_id);
+        */
 
         start = (Button) rootView.findViewById(R.id.start_button_id);
         stop = (Button) rootView.findViewById(R.id.stop_button_id);
@@ -239,6 +243,11 @@ public class TimerFragment extends BaseFragment {
     }
 
 
+
+    public void SetTimeToSubDisplay(int min,int sec){
+        ((MainActivity)getActivity()).SetTimeToSubDisplay(min,sec);
+    }
+
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
@@ -258,8 +267,8 @@ public class TimerFragment extends BaseFragment {
         public void onFinish() {
             timer_second.setText("00");
             timer_minute.setText("00");
-            if(sub_timer_second != null)sub_timer_second.setText("00");
-            if(sub_timer_minute != null)sub_timer_minute.setText("00");
+
+            SetTimeToSubDisplay(0,0);
 
             notice5_flag = false;
             finished_flag = false;
@@ -267,12 +276,13 @@ public class TimerFragment extends BaseFragment {
 
         @Override
         public void onTick(long millisUntilFinished) {
-            String minute_str = String.format("%02d", (millisUntilFinished / 1000 / 60));
-            String second_str = String.format("%02d",(millisUntilFinished / 1000 % 60));
+            int min =(int)(millisUntilFinished / 1000 / 60);
+            int sec =(int)(millisUntilFinished / 1000 % 60);
+            String minute_str = String.format("%02d", min);
+            String second_str = String.format("%02d",sec);
             timer_minute.setText(minute_str);
             timer_second.setText(second_str);
-            if(sub_timer_minute != null) sub_timer_minute.setText(minute_str);
-            if(sub_timer_second != null) sub_timer_second.setText(second_str);
+            SetTimeToSubDisplay(min,sec);
 
 
             if (notice5_flag == false && millisUntilFinished < 60 * 1000 && millisUntilFinished > 55 * 1000) {

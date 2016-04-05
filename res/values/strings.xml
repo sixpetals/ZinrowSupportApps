@@ -37,5 +37,8 @@
     <string name="setting_smart_light_none">使用しない</string>
     <string name="setting_smart_light_nexturn">NEXTURN</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 </resources>

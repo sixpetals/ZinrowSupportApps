@@ -30,7 +30,7 @@ public class BgmFragment extends BaseFragment {
         public static BgmFragment newInstance() {
         BgmFragment fragment = new BgmFragment();
         return fragment;
-    }
+}
 
     public BgmFragment() {
         // Required empty public constructor
