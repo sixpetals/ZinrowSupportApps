@@ -50,7 +50,7 @@ public class MainActivity
 		}
 	}
 
-	public void SetTimeToSubDisplay(int minute, int second){
+	public void setTimeToSubDisplay(int minute, int second){
 		for (RemotePresentation presentation : subDisplays) {
 			TextView sub_time_min = (TextView) presentation.findViewById(R.id.sub_time_minute_text_id);
 			sub_time_min.setText(String.format("%02d", minute));

@@ -66,7 +66,6 @@ public class TimerFragment extends BaseFragment {
         // Inflate the layout for this fragment
         View rootView =  inflater.inflate(R.layout.fragment_timer, container, false);
 
-        //View subView =  inflater.inflate(R.layout.fragment_subdisplay, container, false);
 
         // タイマー
         timer_minute = (TextView) rootView.findViewById(R.id.time_minute_text_id);
@@ -244,8 +243,13 @@ public class TimerFragment extends BaseFragment {
 
 
 
-    public void SetTimeToSubDisplay(int min,int sec){
-        ((MainActivity)getActivity()).SetTimeToSubDisplay(min,sec);
+    public void setTimeToAllDisplay(int min, int sec){
+        String minute_str = String.format("%02d", min);
+        String second_str = String.format("%02d",sec);
+        timer_minute.setText(minute_str);
+        timer_second.setText(second_str);
+
+        ((MainActivity)getActivity()).setTimeToSubDisplay(min,sec);
     }
 
     public interface OnFragmentInteractionListener {
@@ -265,10 +269,7 @@ public class TimerFragment extends BaseFragment {
 
         @Override
         public void onFinish() {
-            timer_second.setText("00");
-            timer_minute.setText("00");
-
-            SetTimeToSubDisplay(0,0);
+            setTimeToAllDisplay(0,0);
 
             notice5_flag = false;
             finished_flag = false;
@@ -278,12 +279,7 @@ public class TimerFragment extends BaseFragment {
         public void onTick(long millisUntilFinished) {
             int min =(int)(millisUntilFinished / 1000 / 60);
             int sec =(int)(millisUntilFinished / 1000 % 60);
-            String minute_str = String.format("%02d", min);
-            String second_str = String.format("%02d",sec);
-            timer_minute.setText(minute_str);
-            timer_second.setText(second_str);
-            SetTimeToSubDisplay(min,sec);
-
+            setTimeToAllDisplay(min,sec);
 
             if (notice5_flag == false && millisUntilFinished < 60 * 1000 && millisUntilFinished > 55 * 1000) {
                 notice5_flag = true;
